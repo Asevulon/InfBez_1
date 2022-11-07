@@ -50,6 +50,22 @@ protected:
 	Получает на вход вектор булевых векторов и возвращает булевый вектор из значений заданного столбца "снизу вверх".
 	*/
 	vector<bool> GetInvertRow(vector<vector<bool>>& data, int id);
+	/*
+	Возвращает левую половину строки
+	*/
+	vector<vector<bool>> getL(vector<vector<bool>>& data);
+	/*
+	Возвращает правую половину строки
+	*/
+	vector<vector<bool>> getR(vector<vector<bool>>& data);
+	/*
+	Возвращает объеденненую булевую строку
+	*/
+	vector<vector<bool>>conj(vector<vector<bool>>& L, vector<vector<bool>>& R);
+	/*
+	Функция расширения
+	*/
+	vector<vector<bool>>E(vector<vector<bool>>& R);
 
 public:
 	DES();

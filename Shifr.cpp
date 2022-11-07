@@ -120,9 +120,102 @@ vector<bool> DES::GetInvertRow(vector<vector<bool>>& data, int id)
 }
 
 
+vector<vector<bool>> DES::getL(vector<vector<bool>>& data)
+{
+	vector<vector<bool>> res;
+	for (int i = 0; i < 4; i++)res.push_back(data[i]);
+	return res;
+}
+vector<vector<bool>> DES::getR(vector<vector<bool>>& data)
+{
+	vector<vector<bool>> res;
+	for (int i = 4; i < 8; i++)res.push_back(data[i]);
+	return res;
+}
+vector<vector<bool>> DES::conj(vector<vector<bool>>& L, vector<vector<bool>>& R)
+{
+	vector<vector<bool>> res;
+	for (auto& item : L)res.push_back(item);
+	for (auto& item : R)res.push_back(item);
+	return res;
+}
 
 
+vector<vector<bool>> DES::E(vector<vector<bool>>& R)
+{
+	vector<vector<bool>>res;
+	vector<bool> temp;
+	//первая строка 
+	temp.push_back(R[3][7]);
+	for (int i = 0; i < 5; i++)temp.push_back(R[0][i]);
+	res.push_back(temp);
+	temp.clear();
+
+	//вторая
+	for (int i = 3; i < 8; i++)temp.push_back(R[0][i]);
+	temp.push_back(R[1][0]);
+	res.push_back(temp);
+	temp.clear();
+
+	//третья
+	temp.push_back(R[0][7]);
+	for (int i = 0; i < 5; i++)temp.push_back(R[1][i]);
+	res.push_back(temp);
+	temp.clear();
+
+	//4
+	for (int i = 3; i < 8; i++)temp.push_back(R[1][i]);
+	temp.push_back(R[2][0]);
+	res.push_back(temp);
+	temp.clear();
+
+	//5
+	temp.push_back(R[1][7]);
+	for (int i = 0; i < 5; i++)temp.push_back(R[2][i]);
+	res.push_back(temp);
+	temp.clear();
+
+	//6
+	for (int i = 3; i < 8; i++)temp.push_back(R[2][i]);
+	temp.push_back(R[3][0]);
+	res.push_back(temp);
+	temp.clear();
+
+	//7
+	temp.push_back(R[2][7]);
+	for (int i = 0; i < 5; i++)temp.push_back(R[3][i]);
+	res.push_back(temp);
+	temp.clear();
+
+	//8
+	for (int i = 3; i < 8; i++)temp.push_back(R[3][i]);
+	temp.push_back(R[0][0]);
+	res.push_back(temp);
+	temp.clear();
+
+
+	return res;
+}
+
+
+bool compare(vector<vector<bool>>& data1, vector<vector<bool>>& data2)
+{
+	for (int i = 0; i < data1.size(); i++)
+	{
+		for (int g = 0; g < data1[i].size(); g++)
+		{
+			if (data1[i][g] != data2[i][g])return false;
+		}
+	}
+	return true;
+}
 void DES::test()
 {
+	string str = "01234567";
+	auto bits = StringToBool(str);
+	auto l = getL(bits);
+	auto r = getR(bits);
+	auto Etest = E(r);
 	
+	while (1);
 }

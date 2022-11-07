@@ -303,7 +303,6 @@ void MyDlg::loadData(LPCWSTR path, CEdit& source)
 	ReadFile(FileToLoad, buffer, size, &bytesIterated, NULL);
 
 
-	SetWindowTextA(source.GetSafeHwnd(), buffer);
 	CloseHandle(FileToLoad);
 	delete[]buffer;
 }
