@@ -13,6 +13,8 @@ class DES
 {
 private:
 	char* text;
+	vector<vector<vector<int>>> S;
+
 
 protected:
 	/*
@@ -66,6 +68,8 @@ protected:
 	Функция расширения
 	*/
 	vector<vector<bool>>E(vector<vector<bool>>& R);
+	//Формирует таблицу S
+	vector<vector<vector<int>>> CreateS();
 
 public:
 	DES();
