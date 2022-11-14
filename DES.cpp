@@ -468,7 +468,7 @@ string DES::Code(string data, string key)
 string DES::Decode(string data, string key)
 {
 	vector<bool> bdata = StringToBool(data);
-	bdata = _IP(bdata);
+	bdata = IP(bdata);
 	vector<bool> l = getL(bdata);
 	vector<bool> r = getR(bdata);
 
@@ -493,7 +493,7 @@ string DES::Decode(string data, string key)
 	vector<bool>res;
 	conj(res, l);
 	conj(res, r);
-	res = IP(res);
+	res = _IP(res);
 
 	return BoolToString(res);
 }
@@ -508,7 +508,7 @@ string DES::getKey()
 void DES::test()
 {
 	string str = "12345678";
-	auto a = IP(StringToBool(str));
-	auto b = BoolToString(_IP(a));
+	auto a = Code(str,str);
+	auto b = Decode(a, str);
 	while (1);
 }
