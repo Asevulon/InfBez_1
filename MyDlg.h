@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include"Shifr.h"
+#include"DES.h"
 #include"vector"
 
 

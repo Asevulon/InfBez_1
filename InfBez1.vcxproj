@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DES.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Shifr.h" />
     <ClInclude Include="InfBez1.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DES.cpp" />
     <ClCompile Include="InfBez1.cpp" />
     <ClCompile Include="MyDlg.cpp" />
     <ClCompile Include="pch.cpp">

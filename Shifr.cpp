@@ -3,13 +3,13 @@
 #include"Shifr.h"
 
 
-DES::DES():text(nullptr) 
+DES1::DES1():text(nullptr) 
 {
 	S = CreateS();
 }
 
 
-vector<vector<bool>> DES::IP(vector<vector<bool>>& data)
+vector<vector<bool>> DES1::IP(vector<vector<bool>>& data)
 {
 	vector<vector<bool>> res;
 	
@@ -24,7 +24,7 @@ vector<vector<bool>> DES::IP(vector<vector<bool>>& data)
 
 	return res;
 }
-vector<vector<bool>> DES::IPrev(vector<vector<bool>>& data)
+vector<vector<bool>> DES1::IPrev(vector<vector<bool>>& data)
 {
 	vector<vector<bool>>res;
 	for (int i = 0; i < 8; i++)res.push_back(vector<bool>({0,0,0,0,0,0,0,0}));
@@ -42,7 +42,7 @@ vector<vector<bool>> DES::IPrev(vector<vector<bool>>& data)
 }
 
 
-vector<vector<bool>> DES::CharToBool(char* data, int len)
+vector<vector<bool>> DES1::CharToBool(char* data, int len)
 {
 	map<int, int> bit;
 	bit[0] = 1;
@@ -67,7 +67,7 @@ vector<vector<bool>> DES::CharToBool(char* data, int len)
 	}
 	return res;
 }
-vector<vector<bool>> DES::StringToBool(string& data)
+vector<vector<bool>> DES1::StringToBool(string& data)
 {
 	map<int, int> bit;
 	bit[0] = 1;
@@ -94,13 +94,13 @@ vector<vector<bool>> DES::StringToBool(string& data)
 }
 
 
-string DES::BoolToString(vector<vector<bool>>& data)
+string DES1::BoolToString(vector<vector<bool>>& data)
 {
 	string res;
 	for (auto& item : data)res += BoolToChar(item);
 	return res;
 }
-char DES::BoolToChar(vector<bool>& data)
+char DES1::BoolToChar(vector<bool>& data)
 {
 	unsigned char res = 0;
 	for (int i = 0; i < 8; i++)
@@ -111,7 +111,7 @@ char DES::BoolToChar(vector<bool>& data)
 }
 
 
-vector<bool> DES::GetInvertRow(vector<vector<bool>>& data, int id)
+vector<bool> DES1::GetInvertRow(vector<vector<bool>>& data, int id)
 {
 	vector<bool>res;
 	for (int i = data.size() - 1; i > -1; i--)res.push_back(data[i][id]);
@@ -119,19 +119,19 @@ vector<bool> DES::GetInvertRow(vector<vector<bool>>& data, int id)
 }
 
 
-vector<vector<bool>> DES::getL(vector<vector<bool>>& data)
+vector<vector<bool>> DES1::getL(vector<vector<bool>>& data)
 {
 	vector<vector<bool>> res;
 	for (int i = 0; i < 4; i++)res.push_back(data[i]);
 	return res;
 }
-vector<vector<bool>> DES::getR(vector<vector<bool>>& data)
+vector<vector<bool>> DES1::getR(vector<vector<bool>>& data)
 {
 	vector<vector<bool>> res;
 	for (int i = 4; i < 8; i++)res.push_back(data[i]);
 	return res;
 }
-vector<vector<bool>> DES::conj(vector<vector<bool>>& L, vector<vector<bool>>& R)
+vector<vector<bool>> DES1::conj(vector<vector<bool>>& L, vector<vector<bool>>& R)
 {
 	vector<vector<bool>> res;
 	for (auto& item : L)res.push_back(item);
@@ -140,7 +140,7 @@ vector<vector<bool>> DES::conj(vector<vector<bool>>& L, vector<vector<bool>>& R)
 }
 
 
-vector<vector<bool>> DES::E(vector<vector<bool>>& R)
+vector<vector<bool>> DES1::E(vector<vector<bool>>& R)
 {
 	vector<vector<bool>>res;
 	vector<bool> temp;
@@ -197,7 +197,7 @@ vector<vector<bool>> DES::E(vector<vector<bool>>& R)
 }
 
 
-vector<vector<vector<int>>> DES::CreateS()
+vector<vector<vector<int>>> DES1::CreateS()
 {
 	vector<vector<vector<int>>> res;
 	vector<vector<int>> S;
@@ -320,6 +320,9 @@ vector<vector<vector<int>>> DES::CreateS()
 	S.push_back(temp);
 	res.push_back(S);
 	S.clear();
+
+
+	return res;
 }
 
 
@@ -334,7 +337,7 @@ bool compare(vector<vector<bool>>& data1, vector<vector<bool>>& data2)
 	}
 	return true;
 }
-void DES::test()
+void DES1::test()
 {
 	string str = "01234567";
 	auto bits = StringToBool(str);

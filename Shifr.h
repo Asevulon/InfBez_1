@@ -9,7 +9,7 @@ using namespace std;
 static HWND mainWnd;
 
 
-class DES
+class DES1
 {
 private:
 	char* text;
@@ -72,7 +72,7 @@ protected:
 	vector<vector<vector<int>>> CreateS();
 
 public:
-	DES();
+	DES1();
 
 	void test();
 };
