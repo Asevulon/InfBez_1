@@ -45,12 +45,6 @@ protected:
 	OPENFILENAME ofn1; //файл
 	wchar_t filename1[260]; //его имя
 
-	//OPENFILENAME ofn2; //файл
-	//wchar_t filename2[260]; //его имя
-
-	//OPENFILENAME ofn3; //файл
-	//wchar_t filename3[260]; //его имя
-
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -72,6 +66,14 @@ public:
 	CEdit fname3;
 	afx_msg void OnBnClickedSave3();
 	afx_msg void OnBnClickedLoad3();
+
+
+	LPSTR in;
+	LPSTR out;
+	LPSTR k;
+	CString keyval;
+	CString o;
+	CString i;
 };
 
 

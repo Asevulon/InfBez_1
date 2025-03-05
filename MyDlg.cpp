@@ -64,7 +64,9 @@ void MyDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT1, input);
 	DDX_Control(pDX, IDC_EDIT2, output);
 	DDX_Control(pDX, IDC_EDIT3, key);
-
+	DDX_Text(pDX, IDC_EDIT3, keyval);
+	DDX_Text(pDX, IDC_EDIT2, o);
+	DDX_Text(pDX, IDC_EDIT1, i);
 	DDX_Radio(pDX, IDC_RADIO1, Code);
 }
 
@@ -175,7 +177,6 @@ HCURSOR MyDlg::OnQueryDragIcon()
 
 void MyDlg::OnBnClickedOk()
 {
-	des.test();
 
 	// TODO: добавьте свой код обработчика уведомлений
 	UpdateData();
@@ -186,10 +187,6 @@ void MyDlg::OnBnClickedOk()
 	}
 
 
-	CString intext, k;
-	key.GetWindowTextW(k);
-
-
 	if (!Code)
 	{
 		if (input.GetWindowTextLengthW() == 0)
@@ -198,10 +195,7 @@ void MyDlg::OnBnClickedOk()
 			return;
 		}
 
-
-		input.GetWindowTextW(intext);
-
-
+		
 	}
 	else
 	{
@@ -210,12 +204,9 @@ void MyDlg::OnBnClickedOk()
 			MessageBox(L"Введите шифруемый текст", L"Ошибка", MB_OK);
 			return;
 		}
-
-
-		output.GetWindowTextW(intext);
-
-
+		i = des.Decode(o, keyval);
 	}
+	UpdateData(FALSE);
 }
 
 
